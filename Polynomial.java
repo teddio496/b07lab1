@@ -86,20 +86,22 @@ public class Polynomial {
     }
     
     public Polynomial convert_to_zero(){
-        int maxi = exponents[exponents.length-1];
+        int maxi = 0;
+        for (int i = 0; i < exponents.length; i++){
+            if (exponents[i] > maxi){
+                maxi = exponents[i];
+            }
+        }
         double [] temp_coefficients = new double[maxi+1];
         int [] temp_exponents = new int[maxi+1];
 
-        int tracker = 0;
+        for (int j = 0; j < exponents.length; j++){
+            temp_coefficients[exponents[j]] = coefficients[j];
+        }
         for (int i = 0; i <= maxi; i++){
             temp_exponents[i] = i;
-            if (exponents[tracker] == i){
-                temp_coefficients[i] = coefficients[tracker];
-                tracker += 1;
-            } else {
-                temp_coefficients[i] = 0;
-            }
         }
+
         return new Polynomial(temp_coefficients, temp_exponents);
     }
 

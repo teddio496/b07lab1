@@ -30,13 +30,18 @@ public class Driver {
 		Polynomial r1 = new Polynomial(m1, t1);
 		Polynomial r2 = new Polynomial(m2, t2);
 		Polynomial r3 = r1.multiply(r2);
+		Polynomial f1 = new Polynomial();
 		System.out.println("r3(2) = " + r3.evaluate(2));
+		try {
+			File input = new File("input.txt");
+			f1 = new Polynomial(input);
+        } catch (Exception e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }  
 
-		File input = new File("input.txt");
-		Polynomial f1 = new Polynomial(input);
-		System.out.println("f1(2) = " + f1.evaluate(2));
 
-		r3.saveToFile("output.txt");
+		f1.saveToFile("output.txt");
 
 	}
 }
