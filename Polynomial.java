@@ -71,11 +71,11 @@ public class Polynomial {
                 to_write += String.valueOf(coefficients[0]) + "+";
             }
 
-            for (int i = 1; i < coefficients.length; i++){
+            for (int i = 0; i < coefficients.length; i++){
                 to_write += String.valueOf(coefficients[i]) + "x" + String.valueOf(exponents[i]) + "+";
             }
 
-            to_write = to_write.replace("+-", "-").substring(0, to_write.length()-1);
+            to_write = to_write.replace("+-", "-").substring(0, to_write.length()-2);
             FileWriter write_file = new FileWriter(filename);
             write_file.write(to_write);
             write_file.close();
